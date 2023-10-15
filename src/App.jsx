@@ -4,6 +4,7 @@ import { RegistrationPage } from './components/pages/registration';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Navbar } from './components/navbar';
+import { Protected } from './components/protected';
 
 function App() {
   return (
@@ -14,7 +15,14 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/registration" element={<RegistrationPage />} />
-            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route
+              path="/dashboard"
+              element={
+                <Protected>
+                  <DashboardPage />
+                </Protected>
+              }
+            />
           </Routes>
         </div>
       </div>
